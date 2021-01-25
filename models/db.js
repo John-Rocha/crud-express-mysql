@@ -1,7 +1,7 @@
 const {Sequelize} = require('sequelize')
 
 //Conexão com o banco de dados MySql
-const sequelize = new Sequelize('test', 'root', 'John@131087', {
+const sequelize = new Sequelize('postapp', 'root', '131087', {
     host: "localhost",
     dialect: 'mysql'
 })

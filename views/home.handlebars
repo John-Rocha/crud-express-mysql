@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-4">
+        <div class="col">
+            <h3 class="text-center">Lista de Posts</h3><br><br>
+            <a href="/cad" class="btn btn-primary">Cadastrar</a><br><br>
+            {{#each posts}}
+            <div class="card">
+                <div class="card-header">
+                     <h5 class="card-title">
+                        {{ dataValues.titulo }}
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{dataValues.conteudo}}</p>
+                    <a href="/del/{{dataValues.id}}">
+                        <button class="btn btn-sm btn-danger">Deletar</button>
+                    </a>
+                    <a href="/editar/{{dataValues.id}}">
+                        <button class="btn btn-sm btn-secondary">Editar</button>
+                    </a>
+                </div>
+            </div>
+            <br>
+            {{/each}}
+        </div>
+    </div>
+</div>
