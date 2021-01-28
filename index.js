@@ -36,7 +36,7 @@ app.post('/add', (req, res) => {
 })
 
 app.get('/del/:id', (req, res) => {
-    Post.destroy({where: {'id': req.params.id}}).then(() => {
+    Post.destroy({where: {id: req.params.id}}).then(() => {
         res.redirect('/')
     }).catch((e) => {
         res.send('Esta postagem não existe! ')
@@ -45,15 +45,22 @@ app.get('/del/:id', (req, res) => {
 
 app.get('/editar/:id', (req, res) => {
     id = req.params.id;
-    res.render('edit')
+    res.render('edit', {id:id})
 })
 
-app.post('/edit', (req, res) => {
+app.post('/edit/:id', (req, res) => {
+    id = req.params.id;
     Post.update({
         titulo: req.body.titulo,
         conteudo: req.body.conteudo,
+    },
+    {
+        where: {id: id}
+    }).then(() => {
+            res.redirect('/')
+        })
     })
-})
+  
 
 app.listen(port, () => {
     console.log(`Servidor http://localhost:${port}`)
