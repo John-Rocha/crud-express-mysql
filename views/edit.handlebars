@@ -3,10 +3,10 @@
         <h3 class="text-center">Edite sua postagem</h3> <hr>
         <form action="/edit/{{id}}" method="POST">
             <label for="titulo">Título</label><br>
-            <input type="text" name="titulo" class="form-control"><br>
+            <input type="text" name="titulo" class="form-control" value="{{titulo}}"><br>
             
             <label for="conteudo">Conteúdo</label><br>
-            <textarea class="form-control" name="conteudo"></textarea><br>
+            <textarea class="form-control" name="conteudo">{{conteudo}}</textarea><br>
 
             <button type="submit" class="btn btn-success float-right">Salvar</button>
             <a href="/" class="btn btn-warning float-right mr-2">Cancelar</a>
