@@ -16,6 +16,7 @@ app.use(bodyParser.json())
 //Rotas
 app.get('/', (req, res) => {
     Post.findAll({order: [['id', 'DESC']]}).then((posts) => {
+        const { id, titulo, conteudo } = posts
         res.render('home', {posts: posts})
     })
 })
@@ -45,7 +46,13 @@ app.get('/del/:id', (req, res) => {
 
 app.get('/editar/:id', (req, res) => {
     id = req.params.id;
-    res.render('edit', {id:id})
+    Post.findOne({where: {id: id}}).then(post => {
+        //Retirando o valor de título e conteúdo da variável post
+        const { titulo, conteudo } = post
+
+        //Passar as variáveis para dentro da rota na hora da renderização, para eu poder utilizar a variável no front-end
+        res.render('edit', {id:id, titulo: titulo, conteudo: conteudo})
+    })
 })
 
 app.post('/edit/:id', (req, res) => {
